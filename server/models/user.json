@@ -1,0 +1,134 @@
+{
+  "name": "user",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "postDB": {
+    "table": "userlogininfo"
+  },
+  "properties": {
+    "realm": null,
+    "email": null,
+    "username": null,
+    "credentials": null,
+    "challenges": null,
+    "emailVerified": null,
+    "verificationToken": null,
+    "status": null,
+    "created": null,
+    "lastUpdated": null
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "login": {
+      "accepts": [
+        {
+          "arg": "body",
+          "type": "object",
+          "required": true,
+          "http": {
+            "source": "body"
+          },
+          "default": {
+            "username": "foo",
+            "password": "bar"
+          }
+        }
+      ],
+      "returns": {
+        "type": "user",
+        "root": true
+      },
+      "http": {
+        "path": "/login",
+        "verb": "post"
+      }
+    },
+    "adminLogin": {
+      "accepts": [
+        {
+          "arg": "body",
+          "type": "object",
+          "required": true,
+          "http": {
+            "source": "body"
+          },
+          "default": {
+            "username": "foo",
+            "password": "bar"
+          }
+        }
+      ],
+      "returns": {
+        "type": "user",
+        "root": true
+      },
+      "http": {
+        "path": "/adminLogin",
+        "verb": "post"
+      }
+    },
+    "logout": {
+      "accepts": [
+        {
+          "arg": "token",
+          "type": "string",
+          "required": true,
+          "http": {
+            "source": "header"
+          }
+        }
+      ],
+      "returns": {
+        "type": "user",
+        "root": true
+      },
+      "http": {
+        "path": "/logout",
+        "verb": "post"
+      }
+    },
+    "manageusers": {
+      "accepts": [
+        {
+          "arg": "username",
+          "type": "string",
+          "http": {
+            "source": "path"
+          }
+        }
+      ],
+      "returns": {
+        "type": "user",
+        "root": true
+      },
+      "http": {
+        "path": "/manageUsers",
+        "verb": "get"
+      }
+    },
+    "update": {
+      "accepts": [
+        {
+          "arg": "username",
+          "type": "string",
+          "http": {
+            "source": "path"
+          }
+        }
+      ],
+      "returns": {
+        "type": "user",
+        "root": true
+      },
+      "http": {
+        "path": "/update",
+        "verb": "put"
+      }
+    }
+  }
+}

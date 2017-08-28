@@ -4,13 +4,12 @@
     "connector": "memory"
   },
   "postDB": {
+    "name": "postDB",
+    "connector": "postgresql",
     "host": "52.170.30.246",
     "port": 5432,
-    "url": "",
     "database": "postgres",
     "password": "postgres",
-    "name": "postDB",
-    "user": "postgres",
-    "connector": "postgresql"
+    "user": "postgres"
   }
 }
